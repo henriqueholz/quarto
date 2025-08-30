@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 
+// Import images as modules
+import logoImg from '/public/logo.png';
+import fotoImg from '/public/foto.jpeg';
+import patrocinioImg from '/public/patrocinio.jpeg';
+import juliaImg from '/public/julia.jpeg';
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -79,7 +85,7 @@ export default function Home() {
             className="mb-6"
           >
             <Image
-              src="/logo.png"
+              src={logoImg}
               alt="Quarto de Som"
               width={600}
               height={600}
@@ -115,7 +121,7 @@ export default function Home() {
               >
                                   <div className="relative overflow-hidden rounded-2xl border border-[#A78E74]/30">
                     <Image
-                      src="/foto.jpeg"
+                      src={fotoImg}
                       alt="Apresentação do Quarto de Som"
                       width={1600}
                       height={1066}
@@ -730,7 +736,7 @@ export default function Home() {
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <Image
-                src="/patrocinio.jpeg"
+                src={patrocinioImg}
                 alt="Patrocinadores do Quarto de Som"
                 width={1600}
                 height={1600}
@@ -770,7 +776,7 @@ export default function Home() {
                 </a>
               </div>
               <Image
-                src="/julia.jpeg"
+                src={juliaImg}
                 alt="Julia Software Development"
                 width={303}
                 height={308}
