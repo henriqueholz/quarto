@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Show Musical - Quarto",
-  description: "Promoção do show musical com artistas incríveis",
+  title: "Quarto de Som - Espetáculo Musical",
+  description: "Um espetáculo que propõe uma experiência sensorial única, reunindo quatro artistas compositoras capixabas em uma apresentação que explora a união entre música, movimento e luz.",
 };
 
 export default function RootLayout({
