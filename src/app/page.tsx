@@ -5,12 +5,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState('sobre');
+  const [activeSection, setActiveSection] = useState('hero');
 
   const sections = [
-    { id: 'sobre', title: 'Sobre' },
+    { id: 'hero', title: 'Sobre' },
     { id: 'edicao1', title: 'Edição 1' },
     { id: 'equipe', title: 'Equipe' },
+    { id: 'ficha-tecnica', title: 'Ficha Técnica' },
     { id: 'apresentacao', title: 'Apresentação' },
     { id: 'oficina', title: 'Oficina' },
     { id: 'clipping', title: 'Clipping' },
@@ -24,7 +25,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-amber-900 via-orange-900 to-red-900 text-white">
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
@@ -35,7 +36,7 @@ export default function Home() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <motion.h1 
-              className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent"
+              className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent"
               whileHover={{ scale: 1.05 }}
             >
               Quarto de Som
@@ -47,7 +48,7 @@ export default function Home() {
                   onClick={() => scrollToSection(section.id)}
                   className={`px-4 py-2 rounded-full transition-all ${
                     activeSection === section.id 
-                      ? 'bg-pink-500 text-white' 
+                      ? 'bg-amber-600 text-white' 
                       : 'hover:bg-white/10'
                   }`}
                   whileHover={{ scale: 1.1 }}
@@ -63,94 +64,63 @@ export default function Home() {
 
       {/* Hero Section */}
       <motion.section 
+        id="hero"
         className="pt-32 pb-20 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
         <div className="container mx-auto text-center">
-          <motion.h1 
-            className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent"
+          <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
+            className="mb-6"
           >
-            QUARTO DE SOM
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl mb-8 text-gray-300"
+            <Image
+              src="/logo.png"
+              alt="Quarto de Som"
+              width={600}
+              height={200}
+              className="mx-auto max-w-full h-auto"
+              priority
+            />
+          </motion.div>
+          <motion.div 
+            className="max-w-6xl mx-auto mb-12"
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Experiência Sensorial Única
-          </motion.p>
-          <motion.button
-            onClick={() => scrollToSection('edicao1')}
-            className="bg-gradient-to-r from-pink-500 to-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-pink-500/25 transition-all"
-            whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(236, 72, 153, 0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Descubra Mais
-          </motion.button>
-        </div>
-      </motion.section>
-
-      {/* Sobre Section */}
-      <motion.section 
-        id="sobre"
-        className="py-20 px-6"
-        initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="container mx-auto">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent"
-            whileInView={{ scale: [0.8, 1.1, 1] }}
-            transition={{ duration: 0.6 }}
-          >
-            Sobre
-          </motion.h2>
-          <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div 
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20"
-                whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" }}
-                transition={{ duration: 0.3 }}
-              >
-                <p className="text-lg md:text-xl leading-relaxed text-gray-200">
-                  O <strong className="text-pink-400">Quarto de Som</strong> é um espetáculo imersivo que propõe uma experiência sensorial única 
-                  ao explorar a fusão entre <strong className="text-purple-400">música, movimento e luz</strong>. No palco, quatro compositoras 
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+                <p className="text-lg md:text-xl leading-relaxed text-gray-200 mb-6">
+                  O <strong className="text-amber-400">Quarto de Som</strong> é um espetáculo imersivo que propõe uma experiência sensorial única 
+                  ao explorar a fusão entre <strong className="text-orange-400">música, movimento e luz</strong>. No palco, quatro compositoras 
                   capixabas apresentam um repertório autoral, com canções inéditas e já lançadas, em performances solo e colaborações.
                 </p>
-                <p className="text-lg md:text-xl leading-relaxed text-gray-200 mt-6">
-                  Com <strong className="text-blue-400">banda ao vivo</strong> e uma cuidadosa direção de movimento e iluminação, 
+                <p className="text-lg md:text-xl leading-relaxed text-gray-200">
+                  Com <strong className="text-red-400">banda ao vivo</strong> e uma cuidadosa direção de movimento e iluminação, 
                   o espetáculo transforma cada apresentação em uma vivência artística envolvente, valorizando a música autoral capixaba 
                   e ampliando a visibilidade das compositoras locais.
                 </p>
-              </motion.div>
+              </div>
               
               <motion.div
                 className="relative"
                 initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
               >
                 <div className="relative overflow-hidden rounded-2xl border border-white/20">
-        <Image
+                  <Image
                     src="/foto.jpeg"
                     alt="Apresentação do Quarto de Som"
                     width={600}
                     height={400}
                     className="w-full h-auto object-cover"
-          priority
-        />
+                    priority
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <p className="text-white text-sm font-medium">
@@ -160,7 +130,19 @@ export default function Home() {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
+
+          <motion.button
+            onClick={() => scrollToSection('edicao1')}
+            className="bg-gradient-to-r from-amber-600 to-orange-700 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-amber-500/25 transition-all"
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(245, 158, 11, 0.3)" }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            Descubra Mais
+          </motion.button>
         </div>
       </motion.section>
 
@@ -175,7 +157,7 @@ export default function Home() {
       >
         <div className="container mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent"
             whileInView={{ scale: [0.8, 1.1, 1] }}
             transition={{ duration: 0.6 }}
           >
@@ -188,14 +170,14 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Contará com as compositoras e intérpretes <strong className="text-blue-400">capixabas</strong>:
+            Contará com as compositoras e intérpretes <strong className="text-orange-400">capixabas</strong>:
           </motion.p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: 'LUIZA DUTRA', color: 'from-pink-500 to-rose-500' },
-              { name: 'BETH MC', color: 'from-purple-500 to-indigo-500' },
-              { name: 'ELAINE AUGUSTA', color: 'from-blue-500 to-cyan-500' },
-              { name: 'GAROÁ', color: 'from-green-500 to-teal-500' }
+              { name: 'LUIZA DUTRA', color: 'from-amber-600 to-orange-600' },
+              { name: 'BETH MC', color: 'from-orange-600 to-red-600' },
+              { name: 'ELAINE AUGUSTA', color: 'from-red-600 to-rose-600' },
+              { name: 'GAROÁ', color: 'from-yellow-600 to-amber-600' }
             ].map((artist, index) => (
               <motion.div
                 key={artist.name}
@@ -227,7 +209,7 @@ export default function Home() {
       >
         <div className="container mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent"
             whileInView={{ scale: [0.8, 1.1, 1] }}
             transition={{ duration: 0.6 }}
           >
@@ -239,21 +221,21 @@ export default function Home() {
                 name: 'Dan Abranches', 
                 role: 'Direção Musical',
                 description: 'Cantor e produtor responsável pela direção musical do espetáculo',
-                color: 'from-purple-500 to-indigo-500',
+                color: 'from-amber-600 to-orange-600',
                 icon: '🎵'
               },
               { 
                 name: 'Gabriela Moriondo', 
                 role: 'Direção de Movimento e Luz',
                 description: 'Bailarina responsável pela direção de movimento e iluminação',
-                color: 'from-pink-500 to-rose-500',
+                color: 'from-orange-600 to-red-600',
                 icon: '💃'
               },
               { 
                 name: 'Fernanda Holz', 
                 role: 'Direção Executiva',
                 description: 'Responsável pela direção executiva e coordenação geral do projeto',
-                color: 'from-blue-500 to-cyan-500',
+                color: 'from-red-600 to-rose-600',
                 icon: '🎭'
               }
             ].map((member, index) => (
@@ -278,6 +260,161 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* Ficha Técnica Section */}
+      <motion.section 
+        id="ficha-tecnica"
+        className="py-20 px-6 bg-black/20"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="container mx-auto">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent"
+            whileInView={{ scale: [0.8, 1.1, 1] }}
+            transition={{ duration: 0.6 }}
+          >
+            Ficha Técnica
+          </motion.h2>
+          
+          <div className="max-w-6xl mx-auto">
+            {/* Artistas */}
+            <motion.div 
+              className="mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-yellow-600 mb-6 text-center">Artistas</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {[
+                  'Luiza Dutra',
+                  'Garoá', 
+                  'Elaine Augusta',
+                  'Beth MC'
+                ].map((artist, index) => (
+                  <motion.div
+                    key={artist}
+                    className="bg-gradient-to-r from-yellow-600/20 to-amber-600/20 backdrop-blur-md rounded-xl p-4 text-center border border-yellow-600/30"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <p className="text-white font-semibold">{artist}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Banda */}
+            <motion.div 
+              className="mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-amber-600 mb-6 text-center">Banda</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {[
+                  { name: 'Natália Arrivabene', role: 'Bateria' },
+                  { name: 'Mariana Gruvira', role: 'Guitarra' },
+                  { name: 'Geremias Rocha', role: 'Teclado' },
+                  { name: 'Heviny Moura', role: 'Baixo e Violino' }
+                ].map((musician, index) => (
+                  <motion.div
+                    key={musician.name}
+                    className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 backdrop-blur-md rounded-xl p-4 text-center border border-amber-600/30"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <p className="text-white font-semibold">{musician.name}</p>
+                    <p className="text-amber-300 text-sm">{musician.role}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Direção e Produção */}
+            <motion.div 
+              className="mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-orange-600 mb-6 text-center">Direção e Produção</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { name: 'Fernanda Holz', role: 'Direção Geral' },
+                  { name: 'Dan Abranches', role: 'Diretor Musical' },
+                  { name: 'Gabriela Moriondo', role: 'Diretora de Movimento' },
+                  { name: 'Flora Fiorio', role: 'Direção de Arte' },
+                  { name: 'Dani Maia', role: 'Produção' },
+                  { name: 'Gabriella Vasconcelos', role: 'Figurino' },
+                  { name: 'Laisa Oliveira', role: 'Designer' },
+                  { name: 'Lais Rocio', role: 'Assessoria de Imprensa' }
+                ].map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    className="bg-gradient-to-r from-orange-600/20 to-red-600/20 backdrop-blur-md rounded-xl p-4 text-center border border-orange-600/30"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <p className="text-white font-semibold">{member.name}</p>
+                    <p className="text-orange-300 text-sm">{member.role}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Equipe Técnica */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-red-600 mb-6 text-center">Equipe Técnica</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { name: 'Daniel Seraphim', role: 'Técnico de Som' },
+                  { name: 'André Stefson', role: 'Técnico de Luz' },
+                  { name: 'Izaque Hortêncio', role: 'Produtor Técnico' },
+                  { name: 'Bernardo Firme', role: 'Fotógrafo' },
+                  { name: 'Wyucler Rodrigues', role: 'Vídeomaker' },
+                  { name: 'Gustavo Louzada', role: 'Vídeomaker' },
+                  { name: 'Danilo Zepellin', role: 'Vídeomaker' }
+                ].map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    className="bg-gradient-to-r from-red-600/20 to-rose-600/20 backdrop-blur-md rounded-xl p-4 text-center border border-red-600/30"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <p className="text-white font-semibold">{member.name}</p>
+                    <p className="text-red-300 text-sm">{member.role}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
       {/* Apresentação SESC/+Mc Section */}
       <motion.section 
         id="apresentacao"
@@ -289,7 +426,7 @@ export default function Home() {
       >
         <div className="container mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-amber-600 to-red-600 bg-clip-text text-transparent"
             whileInView={{ scale: [0.8, 1.1, 1] }}
             transition={{ duration: 0.6 }}
           >
@@ -297,7 +434,7 @@ export default function Home() {
           </motion.h2>
           <div className="max-w-4xl mx-auto">
             <motion.div 
-              className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-md rounded-2xl p-8 border border-yellow-400/30"
+              className="bg-gradient-to-r from-amber-600/20 to-orange-600/20 backdrop-blur-md rounded-2xl p-8 border border-amber-600/30"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
@@ -306,10 +443,10 @@ export default function Home() {
                   className="text-center"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-amber-600 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <span className="text-3xl">🏛️</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-yellow-400 mb-2">SESC</h3>
+                  <h3 className="text-2xl font-bold text-amber-600 mb-2">SESC</h3>
                   <p className="text-gray-200">
                     Apresentação especial no SESC, trazendo toda a magia do Quarto 
                     para um dos espaços culturais mais importantes da cidade.
@@ -319,10 +456,10 @@ export default function Home() {
                   className="text-center"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="w-24 h-24 bg-gradient-to-br from-orange-400 to-red-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-orange-600 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <span className="text-3xl">🎵</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-orange-400 mb-2">+Mc</h3>
+                  <h3 className="text-2xl font-bold text-orange-600 mb-2">+Mc</h3>
                   <p className="text-gray-200">
                     Colaboração especial com +Mc, expandindo os horizontes musicais 
                     e criando uma experiência ainda mais rica e diversificada.
@@ -345,7 +482,7 @@ export default function Home() {
       >
         <div className="container mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent"
             whileInView={{ scale: [0.8, 1.1, 1] }}
             transition={{ duration: 0.6 }}
           >
@@ -358,11 +495,11 @@ export default function Home() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            O projeto promove <strong className="text-green-400">acessibilidade cultural</strong>, oferecendo atividades formativas e gratuitas
+            O projeto promove <strong className="text-yellow-600">acessibilidade cultural</strong>, oferecendo atividades formativas e gratuitas
           </motion.p>
           <div className="max-w-4xl mx-auto">
             <motion.div 
-              className="bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-md rounded-2xl p-8 border border-green-400/30"
+              className="bg-gradient-to-r from-yellow-600/20 to-amber-600/20 backdrop-blur-md rounded-2xl p-8 border border-yellow-600/30"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
@@ -371,10 +508,10 @@ export default function Home() {
                   className="text-center"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-yellow-600 to-amber-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <span className="text-3xl">👁️</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-green-400 mb-4">Ensaio Aberto</h3>
+                  <h3 className="text-2xl font-bold text-yellow-600 mb-4">Ensaio Aberto</h3>
                   <p className="text-gray-200 leading-relaxed">
                     Uma oportunidade única para o público acompanhar o processo criativo do espetáculo, 
                     conhecendo de perto o trabalho das artistas e da equipe de direção.
@@ -385,12 +522,12 @@ export default function Home() {
                   className="text-center"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="w-24 h-24 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-amber-600 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <span className="text-3xl">💃</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-blue-400 mb-4">Oficina de Improvisação na Dança</h3>
+                  <h3 className="text-2xl font-bold text-amber-600 mb-4">Oficina de Improvisação na Dança</h3>
                   <p className="text-gray-200 leading-relaxed">
-                    Ministrada por <strong className="text-cyan-400">Gabriela Moriondo</strong>, esta oficina explora 
+                    Ministrada por <strong className="text-orange-400">Gabriela Moriondo</strong>, esta oficina explora 
                     a conexão entre corpo, movimento e expressão artística através da improvisação.
                   </p>
                 </motion.div>
@@ -398,7 +535,7 @@ export default function Home() {
               
               <div className="text-center mt-8">
                 <motion.button
-                  className="bg-gradient-to-r from-green-500 to-blue-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                  className="bg-gradient-to-r from-yellow-600 to-amber-700 px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:shadow-yellow-500/25 transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -421,7 +558,7 @@ export default function Home() {
       >
         <div className="container mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent"
             whileInView={{ scale: [0.8, 1.1, 1] }}
             transition={{ duration: 0.6 }}
           >
@@ -429,9 +566,9 @@ export default function Home() {
           </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: 'Revista Cultural', date: '15 Jan 2024', excerpt: 'Quarto promete revolucionar a cena musical local...' },
-              { title: 'Blog Musical', date: '20 Jan 2024', excerpt: 'Artistas excepcionais se reúnem em show intimista...' },
-              { title: 'Portal de Notícias', date: '25 Jan 2024', excerpt: 'Oficina "O Corpo que Canta" desperta interesse...' }
+              { title: 'Revista Cultural', date: '15 Jan 2025', excerpt: 'Quarto de Som promete revolucionar a cena musical local...' },
+              { title: 'Blog Musical', date: '20 Jan 2025', excerpt: 'Artistas excepcionais se reúnem em show intimista...' },
+              { title: 'Portal de Notícias', date: '25 Jan 2025', excerpt: 'Oficina "O Corpo que Canta" desperta interesse...' }
             ].map((clip, index) => (
               <motion.div
                 key={index}
@@ -442,14 +579,14 @@ export default function Home() {
                 whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)" }}
                 viewport={{ once: true }}
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-pink-500 rounded-full mb-4 flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-red-600 rounded-full mb-4 flex items-center justify-center">
                   <span className="text-xl">📰</span>
                 </div>
-                <h3 className="text-xl font-bold text-red-400 mb-2">{clip.title}</h3>
+                <h3 className="text-xl font-bold text-orange-600 mb-2">{clip.title}</h3>
                 <p className="text-sm text-gray-400 mb-3">{clip.date}</p>
                 <p className="text-gray-200">{clip.excerpt}</p>
                 <motion.button
-                  className="mt-4 text-pink-400 hover:text-pink-300 font-semibold"
+                  className="mt-4 text-orange-400 hover:text-orange-300 font-semibold"
                   whileHover={{ x: 5 }}
                 >
                   Ler mais →
@@ -471,7 +608,7 @@ export default function Home() {
       >
         <div className="container mx-auto">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-12 text-center bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent"
             whileInView={{ scale: [0.8, 1.1, 1] }}
             transition={{ duration: 0.6 }}
           >
@@ -479,20 +616,20 @@ export default function Home() {
           </motion.h2>
           <div className="max-w-4xl mx-auto">
             <motion.div 
-              className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-md rounded-2xl p-8 border border-cyan-400/30"
+              className="bg-gradient-to-r from-red-600/20 to-rose-600/20 backdrop-blur-md rounded-2xl p-8 border border-red-600/30"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-cyan-400 mb-6">Entre em Contato</h3>
+                  <h3 className="text-2xl font-bold text-red-600 mb-6">Entre em Contato</h3>
                   <div className="space-y-4">
                     <motion.div 
                       className="flex items-center space-x-3"
                       whileHover={{ x: 10 }}
                     >
                       <span className="text-2xl">📧</span>
-                      <a href="mailto:fernandaholz.adv@gmail.com" className="text-gray-200 hover:text-cyan-400 transition-colors">
+                      <a href="mailto:fernandaholz.adv@gmail.com" className="text-gray-200 hover:text-red-400 transition-colors">
                         fernandaholz.adv@gmail.com
                       </a>
                     </motion.div>
@@ -501,7 +638,7 @@ export default function Home() {
                       whileHover={{ x: 10 }}
                     >
                       <span className="text-2xl">📱</span>
-                      <a href="tel:+5527999250775" className="text-gray-200 hover:text-cyan-400 transition-colors">
+                      <a href="tel:+5527999250775" className="text-gray-200 hover:text-red-400 transition-colors">
                         (27) 99925-0775
                       </a>
                     </motion.div>
@@ -510,38 +647,38 @@ export default function Home() {
                       whileHover={{ x: 10 }}
                     >
                       <span className="text-2xl">📍</span>
-                      <span className="text-gray-200">Espírito Santo, ES</span>
+                      <span className="text-gray-200">Vitória - ES</span>
                     </motion.div>
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-cyan-400 mb-6">Redes Sociais</h3>
+                  <h3 className="text-2xl font-bold text-red-600 mb-6">Redes Sociais</h3>
                   <div className="flex space-x-4">
                     {[
                       { 
                         name: 'Instagram', 
                         icon: '📷', 
                         url: 'https://www.instagram.com/quartodesom_?igsh=MWE5OWk3aTlhd2tvbA==',
-                        color: 'from-pink-400 to-purple-500'
+                        color: 'from-orange-600 to-red-600'
                       },
                       { 
                         name: 'Email', 
                         icon: '📧', 
                         url: 'mailto:fernandaholz.adv@gmail.com',
-                        color: 'from-blue-400 to-cyan-500'
+                        color: 'from-red-600 to-rose-600'
                       },
                       { 
                         name: 'WhatsApp', 
                         icon: '📱', 
                         url: 'https://wa.me/5527999250775',
-                        color: 'from-green-400 to-emerald-500'
+                        color: 'from-amber-600 to-orange-600'
                       }
                     ].map((social, index) => (
                       <motion.a
                         key={social.name}
                         href={social.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
                         className={`w-12 h-12 bg-gradient-to-br ${social.color} rounded-full flex items-center justify-center hover:shadow-lg transition-all`}
                         whileHover={{ scale: 1.2, rotate: 15 }}
                         whileTap={{ scale: 0.9 }}
@@ -567,10 +704,35 @@ export default function Home() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container mx-auto text-center">
-          <p className="text-gray-400">
-            © 2024 Quarto de Som. Todos os direitos reservados.
-          </p>
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-gray-400">
+              © 2025 Quarto de Som. Todos os direitos reservados.
+            </p>
+            
+            <motion.div 
+              className="flex items-center gap-4 bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="text-right">
+                <p className="text-gray-300 text-sm">Desenvolvido por</p>
+                <a 
+                  href="tel:+5527999990251" 
+                  className="text-amber-400 hover:text-amber-300 transition-colors text-sm font-medium"
+                >
+                  +55 (27) 99999-0251
+                </a>
+              </div>
+              <Image
+                src="/julia.jpeg"
+                alt="Julia Software Development"
+                width={60}
+                height={60}
+                className="rounded-lg"
+              />
+            </motion.div>
+          </div>
         </div>
       </motion.footer>
     </div>
