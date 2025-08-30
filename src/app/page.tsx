@@ -5,10 +5,10 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 // Import images as modules
-import logoImg from '/public/logo.png';
-import fotoImg from '/public/foto.jpeg';
-import patrocinioImg from '/public/patrocinio.jpeg';
-import juliaImg from '/public/julia.jpeg';
+import logoImg from '../../public/logo.png';
+import fotoImg from '../../public/foto.jpeg';
+import patrocinioImg from '../../public/patrocinio.jpeg';
+import juliaImg from '../../public/julia.jpeg';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
