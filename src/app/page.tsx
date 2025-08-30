@@ -82,7 +82,7 @@ export default function Home() {
               src="/logo.png"
               alt="Quarto de Som"
               width={600}
-              height={200}
+              height={600}
               className="mx-auto max-w-full h-auto"
               priority
             />
@@ -117,8 +117,8 @@ export default function Home() {
                     <Image
                       src="/foto.jpeg"
                       alt="Apresentação do Quarto de Som"
-                      width={600}
-                      height={400}
+                      width={1600}
+                      height={1066}
                       className="w-full h-auto object-cover"
                       priority
                     />
@@ -732,8 +732,8 @@ export default function Home() {
               <Image
                 src="/patrocinio.jpeg"
                 alt="Patrocinadores do Quarto de Som"
-                width={1000}
-                height={600}
+                width={1600}
+                height={1600}
                 className="w-full h-auto rounded-xl"
                 priority
               />
@@ -772,8 +772,8 @@ export default function Home() {
               <Image
                 src="/julia.jpeg"
                 alt="Julia Software Development"
-                width={60}
-                height={60}
+                width={303}
+                height={308}
                 className="rounded-lg"
               />
             </motion.div>
