@@ -3,6 +3,20 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
+import { 
+  FaMicrophone, 
+  FaMusic, 
+  FaTheaterMasks, 
+  FaBuilding, 
+  FaEye, 
+  FaRunning, 
+  FaNewspaper, 
+  FaEnvelope, 
+  FaPhone, 
+  FaMapMarkerAlt, 
+  FaInstagram, 
+  FaWhatsapp 
+} from 'react-icons/fa';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -179,10 +193,34 @@ export default function Home() {
           </motion.p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: 'LUIZA DUTRA', bgColor: '#A78E74' },
-              { name: 'BETH MC', bgColor: '#C0A37A' },
-              { name: 'ELAINE AUGUSTA', bgColor: '#B07D62' },
-              { name: 'GAROÁ', bgColor: '#8C5A3C' }
+              { 
+                name: 'LUIZA DUTRA', 
+                bgColor: '#A78E74',
+                image: '/luiza.jpg',
+                instagram: '@luizadutraoficial',
+                instagramUrl: 'https://www.instagram.com/luizadutraoficial'
+              },
+              { 
+                name: 'BETH MC', 
+                bgColor: '#C0A37A',
+                image: '/bethmc.jpg',
+                instagram: '@_bethmc',
+                instagramUrl: 'https://www.instagram.com/_bethmc'
+              },
+              { 
+                name: 'ELAINE AUGUSTA', 
+                bgColor: '#B07D62',
+                image: '/elaine.jpg',
+                instagram: '@elaineaugustaoficial',
+                instagramUrl: 'https://www.instagram.com/elaineaugustaoficial'
+              },
+              { 
+                name: 'GAROÁ', 
+                bgColor: '#8C5A3C',
+                image: '/garoa.jpg',
+                instagram: '@a.garoar',
+                instagramUrl: 'https://www.instagram.com/a.garoar'
+              }
             ].map((artist, index) => (
               <motion.div
                 key={artist.name}
@@ -194,10 +232,27 @@ export default function Home() {
                 whileHover={{ scale: 1.05, rotate: 2 }}
                 viewport={{ once: true }}
               >
-                <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center border border-[#F0EDE6]/30" style={{ backgroundColor: 'rgba(240, 237, 230, 0.2)' }}>
-                  <span className="text-2xl">🎤</span>
+                <div className="w-24 h-24 rounded-full mx-auto mb-4 overflow-hidden border-2 border-[#F0EDE6]/30">
+                  <Image
+                    src={artist.image}
+                    alt={`${artist.name} - Cantora`}
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h3 className="text-xl font-bold text-[#F0EDE6]">{artist.name}</h3>
+                <h3 className="text-xl font-bold text-[#F0EDE6] mb-2">{artist.name}</h3>
+                <motion.a
+                  href={artist.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-2 text-[#F0EDE6]/80 hover:text-[#F0EDE6] transition-colors text-sm"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <FaInstagram className="text-lg" />
+                  <span>{artist.instagram}</span>
+                </motion.a>
               </motion.div>
             ))}
           </div>
@@ -227,22 +282,19 @@ export default function Home() {
                 name: 'Dan Abranches', 
                 role: 'Direção Musical',
                 description: 'Cantor e produtor responsável pela direção musical do espetáculo',
-                bgColor: '#A78E74',
-                icon: '🎵'
+                bgColor: '#A78E74'
               },
               { 
                 name: 'Gabriela Moriondo', 
                 role: 'Direção de Movimento e Luz',
                 description: 'Bailarina responsável pela direção de movimento e iluminação',
-                bgColor: '#C0A37A',
-                icon: '💃'
+                bgColor: '#C0A37A'
               },
               { 
                 name: 'Fernanda Holz', 
                 role: 'Direção Executiva',
                 description: 'Responsável pela direção executiva e coordenação geral do projeto',
-                bgColor: '#B07D62',
-                icon: '🎭'
+                bgColor: '#B07D62'
               }
             ].map((member, index) => (
               <motion.div
@@ -256,7 +308,9 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center border border-[#F0EDE6]/30" style={{ backgroundColor: 'rgba(240, 237, 230, 0.2)' }}>
-                  <span className="text-3xl">{member.icon}</span>
+                  {member.name === 'Dan Abranches' && <FaMusic className="text-3xl text-[#F0EDE6]" />}
+                  {member.name === 'Gabriela Moriondo' && <FaRunning className="text-3xl text-[#F0EDE6]" />}
+                  {member.name === 'Fernanda Holz' && <FaTheaterMasks className="text-3xl text-[#F0EDE6]" />}
                 </div>
                 <h3 className="text-xl font-bold text-[#F0EDE6] mb-2">{member.name}</h3>
                 <h4 className="text-sm font-semibold text-[#E8DCC8] mb-3 uppercase tracking-wide">{member.role}</h4>
@@ -297,13 +351,29 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-[#8C5A3C] mb-6 text-center">Artistas</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
-                  'Luiza Dutra',
-                  'Garoá', 
-                  'Elaine Augusta',
-                  'Beth MC'
+                  { 
+                    name: 'Luiza Dutra',
+                    instagram: '@luizadutraoficial',
+                    instagramUrl: 'https://www.instagram.com/luizadutraoficial'
+                  },
+                  { 
+                    name: 'Garoá',
+                    instagram: '@a.garoar',
+                    instagramUrl: 'https://www.instagram.com/a.garoar'
+                  },
+                  { 
+                    name: 'Elaine Augusta',
+                    instagram: '@elaineaugustaoficial',
+                    instagramUrl: 'https://www.instagram.com/elaineaugustaoficial'
+                  },
+                  { 
+                    name: 'Beth MC',
+                    instagram: '@_bethmc',
+                    instagramUrl: 'https://www.instagram.com/_bethmc'
+                  }
                 ].map((artist, index) => (
                   <motion.div
-                    key={artist}
+                    key={artist.name}
                     className="backdrop-blur-md rounded-xl p-4 text-center border border-[#A78E74]/30"
                     style={{ backgroundColor: 'rgba(167, 142, 116, 0.15)' }}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -312,7 +382,17 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     viewport={{ once: true }}
                   >
-                    <p className="text-[#5B4636] font-semibold">{artist}</p>
+                    <p className="text-[#5B4636] font-semibold mb-2">{artist.name}</p>
+                    <motion.a
+                      href={artist.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1 text-[#8C5A3C] hover:text-[#B07D62] transition-colors text-xs"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <FaInstagram className="text-sm" />
+                      <span>{artist.instagram}</span>
+                    </motion.a>
                   </motion.div>
                 ))}
               </div>
@@ -453,7 +533,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-24 h-24 bg-gradient-to-br from-amber-600 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-3xl">🏛️</span>
+                    <FaBuilding className="text-3xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#B07D62] mb-2">SESC</h3>
                   <p className="text-[#5B4636]">
@@ -466,7 +546,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-24 h-24 bg-gradient-to-br from-orange-600 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-3xl">🎵</span>
+                    <FaMusic className="text-3xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#C0A37A] mb-2">+Mc</h3>
                   <p className="text-[#5B4636]">
@@ -518,7 +598,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-24 h-24 bg-gradient-to-br from-yellow-600 to-amber-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-3xl">👁️</span>
+                    <FaEye className="text-3xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-yellow-600 mb-4">Ensaio Aberto</h3>
                   <p className="text-[#5B4636] leading-relaxed">
@@ -532,7 +612,7 @@ export default function Home() {
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-24 h-24 bg-gradient-to-br from-amber-600 to-orange-600 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-3xl">💃</span>
+                    <FaRunning className="text-3xl text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-amber-600 mb-4">Oficina de Improvisação na Dança</h3>
                   <p className="text-[#5B4636] leading-relaxed">
@@ -589,7 +669,7 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-red-600 rounded-full mb-4 flex items-center justify-center">
-                  <span className="text-xl">📰</span>
+                  <FaNewspaper className="text-xl text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-orange-600 mb-2">{clip.title}</h3>
                 <p className="text-sm text-[#8C5A3C] mb-3">{clip.date}</p>
@@ -637,7 +717,7 @@ export default function Home() {
                       className="flex items-center space-x-3"
                       whileHover={{ x: 10 }}
                     >
-                      <span className="text-2xl">📧</span>
+                      <FaEnvelope className="text-2xl text-[#B07D62]" />
                       <a href="mailto:fernandaholz.adv@gmail.com" className="text-[#5B4636] hover:text-[#B07D62] transition-colors">
                         fernandaholz.adv@gmail.com
                       </a>
@@ -646,7 +726,7 @@ export default function Home() {
                       className="flex items-center space-x-3"
                       whileHover={{ x: 10 }}
                     >
-                      <span className="text-2xl">📱</span>
+                      <FaPhone className="text-2xl text-[#B07D62]" />
                       <a href="tel:+5527999250775" className="text-[#5B4636] hover:text-[#B07D62] transition-colors">
                         (27) 99925-0775
                       </a>
@@ -655,7 +735,7 @@ export default function Home() {
                       className="flex items-center space-x-3"
                       whileHover={{ x: 10 }}
                     >
-                      <span className="text-2xl">📍</span>
+                      <FaMapMarkerAlt className="text-2xl text-[#B07D62]" />
                       <span className="text-[#5B4636]">Vitória - ES</span>
                     </motion.div>
                   </div>
@@ -666,19 +746,19 @@ export default function Home() {
                     {[
                       { 
                         name: 'Instagram', 
-                        icon: '📷', 
+                        icon: <FaInstagram className="text-xl text-white" />, 
                         url: 'https://www.instagram.com/quartodesom_?igsh=MWE5OWk3aTlhd2tvbA==',
                         color: 'from-orange-600 to-red-600'
                       },
                       { 
                         name: 'Email', 
-                        icon: '📧', 
+                        icon: <FaEnvelope className="text-xl text-white" />, 
                         url: 'mailto:fernandaholz.adv@gmail.com',
                         color: 'from-red-600 to-rose-600'
                       },
                       { 
                         name: 'WhatsApp', 
-                        icon: '📱', 
+                        icon: <FaWhatsapp className="text-xl text-white" />, 
                         url: 'https://wa.me/5527999250775',
                         color: 'from-amber-600 to-orange-600'
                       }
@@ -695,7 +775,7 @@ export default function Home() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
                       >
-                        <span className="text-xl">{social.icon}</span>
+                        {social.icon}
                       </motion.a>
                     ))}
                   </div>
