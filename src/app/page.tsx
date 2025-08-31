@@ -4,12 +4,6 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import Image from 'next/image';
 
-// Import images as modules
-import logoImg from '../../public/logo.png';
-import fotoImg from '../../public/foto.jpeg';
-import patrocinioImg from '../../public/patrocinio.jpeg';
-import juliaImg from '../../public/julia.jpeg';
-
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
 
@@ -85,11 +79,12 @@ export default function Home() {
             className="mb-6"
           >
             <Image
-              src={logoImg}
-              alt="Quarto de Som"
-              width={600}
-              height={600}
+              src={'/logo.png'}
+              alt="Quarto de Som - Logo"
+              width={400}
+              height={400}
               className="mx-auto max-w-full h-auto"
+              sizes="(max-width: 768px) 80vw, (max-width: 1200px) 60vw, 400px"
               priority
             />
           </motion.div>
@@ -121,11 +116,12 @@ export default function Home() {
               >
                                   <div className="relative overflow-hidden rounded-2xl border border-[#A78E74]/30">
                     <Image
-                      src={fotoImg}
+                      src={'/foto.jpeg'}
                       alt="Apresentação do Quarto de Som"
-                      width={1600}
-                      height={1066}
+                      width={800}
+                      height={600}
                       className="w-full h-auto object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#5B4636]/60 to-transparent"></div>
@@ -736,12 +732,13 @@ export default function Home() {
           >
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
               <Image
-                src={patrocinioImg}
+                src={'/patrocinio.jpeg'}
                 alt="Patrocinadores do Quarto de Som"
-                width={1600}
-                height={1600}
+                width={800}
+                height={800}
                 className="w-full h-auto rounded-xl"
-                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+                loading="lazy"
               />
             </div>
           </motion.div>
@@ -776,11 +773,11 @@ export default function Home() {
                 </a>
               </div>
               <Image
-                src={juliaImg}
+                src={'/julia.jpeg'}
                 alt="Julia Software Development"
-                width={303}
-                height={308}
-                className="rounded-lg"
+                width={60}
+                height={60}
+                className="rounded-lg w-16 h-16 object-cover"
               />
             </motion.div>
           </div>
